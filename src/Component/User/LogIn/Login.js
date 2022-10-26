@@ -3,11 +3,38 @@ import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { GoMarkGithub } from "react-icons/go";
 import { AiOutlineGoogle } from "react-icons/ai";
+import { useContext } from 'react';
+import { AuthContext } from '../../../AuthProvider/AuthProvider';
 
 const Login = () => {
+    const { googleLogin, githubLogin, login } = useContext(AuthContext)
     const { register, handleSubmit } = useForm();
-    const handleLoginForm = data => {
+    const handleLoginForm = user => {
+        const email = user.email;
+        const password = user.password;
+        login(email, password)
 
+        console.log();
+    }
+    const handleGoogleLogin = () => {
+        googleLogin()
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => {
+                console.error(error);
+            })
+    }
+    const handleGithubLogin = () => {
+        githubLogin()
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => {
+                console.error(error);
+            })
     }
 
     return (
@@ -29,8 +56,8 @@ const Login = () => {
                     <div className='flex space-x-20'>
                         <p>Don't Have an Account: <Link to={'/signup'} className='text-yellow-500'>Sign Up</Link></p>
                         <div className='flex items-center space-x-3 text-xl text-black'>
-                            <GoMarkGithub></GoMarkGithub>
-                            <AiOutlineGoogle></AiOutlineGoogle>
+                            <GoMarkGithub onClick={handleGithubLogin} className='cursor-pointer hover:scale-150 duration-200'></GoMarkGithub>
+                            <AiOutlineGoogle onClick={handleGoogleLogin} className='cursor-pointer hover:scale-150 duration-200'></AiOutlineGoogle>
                         </div>
                     </div>
                 </form>

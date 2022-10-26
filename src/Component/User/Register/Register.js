@@ -1,11 +1,43 @@
+import { updateProfile } from 'firebase/auth';
 import React from 'react';
+import { useState } from 'react';
+import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../AuthProvider/AuthProvider';
 
 const Register = () => {
+    const [error, setError] = useState('');
+    const { updateEmail, Signup, updateProfileCurrentUser } = useContext(AuthContext)
     const { register, handleSubmit } = useForm();
     const handleSignUpForm = (user) => {
-        console.log(user);
+        setError('')
+        const fullName = user.lastName ? user.firstName + ' ' + user.lastName : user.firstName;
+        const photoURL = user.photo;
+        const email = user.email;
+        const password = user.password;
+        const Cpassword = user.Cpassword;
+        if (password === Cpassword) {
+            Signup(email, password)
+                .then(result => {
+                    const user = result.user;
+                    console.log(user);
+                    handleUpdateProfile(fullName, photoURL);
+                    updateEmail();
+                    alert('sand a mail check your inbox')
+                })
+                .catch(error => {
+                    console.error(error);
+                })
+        }
+        else {
+            setError('Incorrect password please ty again')
+        }
+        console.log(fullName, photoURL, email, password, Cpassword);
+    }
+    const handleUpdateProfile = (fullName, photoURL) => {
+        const userInfo = { displayName: fullName, photoURL: photoURL }
+        updateProfileCurrentUser(userInfo)
     }
     return (
         <section className="flex justify-center p-6  text-gray-50">
@@ -19,7 +51,7 @@ const Register = () => {
                         </dir>
                         <dir>
                             <p><label htmlFor="">Last Name</label></p>
-                            <input {...register('lastName')} type="text" placeholder='last' className=' rounded p-2 text-black text-xl' required />
+                            <input {...register('lastName')} type="text" placeholder='last' className=' rounded p-2 text-black text-xl' />
                         </dir>
                     </div>
                     <div className='ml-10 space-y-5'>
@@ -34,10 +66,12 @@ const Register = () => {
                         <div>
                             <p><label htmlFor="">Password</label></p>
                             <input {...register('password')} type="password" placeholder='Enter Password' className='w-10/12 rounded p-2 text-black text-xl' required />
+                            {error && <p className='text-red-700'>{error}</p>}
                         </div>
                         <div>
                             <p><label htmlFor="">Confirm Password</label></p>
                             <input {...register('Cpassword')} type="password" placeholder='Confirm Password' className='w-10/12 rounded p-2 text-black text-xl' required />
+                            {error && <p className='text-red-700'>{error}</p>}
                         </div>
                     </div>
                     <button className='bg-white text-black px-8 py-2 mt-5 ml-10'>Submit</button>
