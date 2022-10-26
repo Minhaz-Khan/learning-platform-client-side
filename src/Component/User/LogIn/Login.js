@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { GoMarkGithub } from "react-icons/go";
 import { AiOutlineGoogle } from "react-icons/ai";
 import { useContext } from 'react';
@@ -9,6 +9,9 @@ import { AuthContext } from '../../../AuthProvider/AuthProvider';
 const Login = () => {
     const { googleLogin, githubLogin, login } = useContext(AuthContext)
     const { register, handleSubmit } = useForm();
+    const navigate = useNavigate()
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/"
     const handleLoginForm = user => {
         const email = user.email;
         const password = user.password;
@@ -16,6 +19,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                navigate(from, { replace: true })
             })
             .catch(error => {
                 console.error(error);
