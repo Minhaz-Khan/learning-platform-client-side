@@ -1,12 +1,22 @@
 import React from 'react';
+import { useContext } from 'react';
 import { useState } from 'react';
 import { BsXLg } from "react-icons/bs";
 import { GoListUnordered } from "react-icons/go";
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../256-2562043_vector-logo-design-free-online-education-logo-png.png'
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const Header = () => {
-    const [open, setOpen] = useState(false)
+    const { user, logout } = useContext(AuthContext);
+    const [open, setOpen] = useState(false);
+    const handleLogOut = () => {
+        logout()
+            .then(() => { })
+            .catch((e) => {
+                console.error(e);
+            })
+    }
     return (
         <div className='grid lg:grid-cols-2 grid-cols-1 justify-between items-center lg:px-20 py-5 relative bg-slate-50 z-10'>
             <div className='flex lg:px-0 px-4 justify-between '>
@@ -25,14 +35,21 @@ const Header = () => {
                     <li><NavLink to='/faq' className={({ isActive }) => isActive ? 'border-b-2 border-yellow-400 duration-200' : 'text-black hover:text-yellow-400 duration-500'}>FAQ</NavLink></li>
 
                     <li><NavLink to='/blog' className={({ isActive }) => isActive ? 'border-b-2 border-yellow-400 duration-200' : 'text-black hover:text-yellow-400 duration-500'}>Blog</NavLink></li>
-                    <div className='font-normal'>
-                        <Link to={'/login'}>
-                            <button className='mr-3 px-5 py-2 bg-blue-600 rounded-3xl text-white'>Login</button>
-                        </Link>
-                        <Link to={'/signup'}>
-                            <button className='border-2 rounded-3xl px-5 py-2 hover:bg-slate-400 hover:text-white'>Sign Up</button>
-                        </Link>
-                    </div>
+                    {
+                        user?.uid ?
+                            <>
+                                <button onClick={handleLogOut} className='border-2 rounded-3xl px-5 py-2 hover:bg-slate-400 hover:text-white'>Log out</button>
+                                <img src={user?.photoURL} className='h-[50px] w-[50px] rounded-full cursor-pointer' alt="" title={user?.displayName} />
+                            </> :
+                            <div className='font-normal'>
+                                <Link to={'/login'}>
+                                    <button className='mr-3 px-5 py-2 bg-blue-600 rounded-3xl text-white'>Login</button>
+                                </Link>
+                                <Link to={'/signup'}>
+                                    <button className='border-2 rounded-3xl px-5 py-2 hover:bg-slate-400 hover:text-white'>Sign Up</button>
+                                </Link>
+                            </div>
+                    }
 
                 </ul>
             </div>

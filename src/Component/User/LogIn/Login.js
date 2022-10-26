@@ -13,6 +13,13 @@ const Login = () => {
         const email = user.email;
         const password = user.password;
         login(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => {
+                console.error(error);
+            })
 
         console.log();
     }
@@ -52,7 +59,7 @@ const Login = () => {
                         <input {...register('password')} type="password" placeholder='Enter password' className='w-10/12 rounded p-2 text-black text-xl' required />
                     </div>
 
-                    <button className='bg-white text-black px-8 py-2'>Log in</button>
+                    <button className='bg-white text-black px-8 py-2 hover:bg-blue-500 duration-300'>Log in</button>
                     <div className='flex space-x-20'>
                         <p>Don't Have an Account: <Link to={'/signup'} className='text-yellow-500'>Sign Up</Link></p>
                         <div className='flex items-center space-x-3 text-xl text-black'>
