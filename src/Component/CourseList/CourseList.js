@@ -1,6 +1,9 @@
 import { FaStar, FaClock } from "react-icons/fa";
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import Aos from 'aos';
+import "aos/dist/aos.css"
+import { useEffect } from "react";
 
 const CourseList = ({ course }) => {
     const { about, cours_duration, cours_name, level, picture, rating, _id } = course;
@@ -8,8 +11,11 @@ const CourseList = ({ course }) => {
     const handleDetailsButton = () => {
         navigate(`/course/${_id}`)
     }
+    useEffect(() => {
+        Aos.init({ duration: 2000 });
+    }, [])
     return (
-        <div className="max-w-lg p-4 shadow-md dark:bg-gray-900 dark:text-gray-100 mx-auto bg-white rounded">
+        <div data-aos="fade-up" className="max-w-lg p-4 shadow-md dark:bg-gray-900 dark:text-gray-100 mx-auto bg-white rounded">
             <div className="flex justify-between pb-4 border-bottom">
                 <div className="flex items-center">
                     <p className="mb-0 capitalize dark:text-gray-100 text-xl font-medium">{cours_name}</p>
