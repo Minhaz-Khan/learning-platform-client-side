@@ -9,10 +9,10 @@ const Courses = () => {
     return (
         <>
             <div className='grid grid-cols-12'>
-                <div className='col-span-3 bg-rose-200 space-y-10 p-10 text-xl' >
+                <div className='lg:col-span-3 col-span-12 bg-rose-200 space-y-10 p-10 text-xl' >
                     {courses.map(course => <LeftSideNav key={course._id} course={course}></LeftSideNav>)}
                 </div>
-                <div className='col-span-9 bg-rose-50 grid grid-cols-2 gap-y-10 py-10 px-16'>
+                <div className='lg:col-span-9 col-span-12 bg-rose-50 grid lg:grid-cols-2 grid-cols-1 gap-y-10 py-10  lg:px-16 px-5'>
                     {courses.map(course => <CourseList key={course._id} course={course}></CourseList>)}
                 </div>
             </div>

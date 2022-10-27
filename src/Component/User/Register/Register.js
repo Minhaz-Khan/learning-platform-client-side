@@ -41,10 +41,10 @@ const Register = () => {
     }
     return (
         <section className="flex justify-center p-6  text-gray-50">
-            <div className=' border-2 w-4/12 bg-gray-400 rounded-lg'>
+            <div className=' border-2 lg:w-4/12  w-12/12 bg-gray-400 rounded-lg'>
                 <h3 className='text-2xl font-medium text-center border-b-2 py-5'>Sign Up</h3>
                 <form onSubmit={handleSubmit(handleSignUpForm)} className="my-10">
-                    <div className='flex'>
+                    <div className='lg:flex'>
                         <dir className=''>
                             <p><label htmlFor="">First Name</label></p>
                             <input {...register('firstName')} type="text" placeholder='first' className=' rounded p-2 text-black text-xl' required />

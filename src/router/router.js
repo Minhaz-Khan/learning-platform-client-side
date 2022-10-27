@@ -1,6 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
+import Blog from "../Component/Blog/Blog";
 import CheckOutPage from "../Component/CheckOutPage/CheckOutPage";
 import Course from "../Component/Course/Course";
+import FAQ from "../Component/FAQ/FAQ";
 import Home from "../Component/Home/Home";
 import Login from "../Component/User/LogIn/Login";
 import Register from "../Component/User/Register/Register";
@@ -26,12 +28,12 @@ export const router = createBrowserRouter([
             {
                 path: 'courses',
                 element: <Courses></Courses>,
-                loader: () => fetch('http://localhost:5000/courses')
+                loader: () => fetch('https://learning-platform-assignment-server.vercel.app/courses')
             },
             {
                 path: 'course/:id',
                 element: <Course></Course>,
-                loader: ({ params }) => fetch(`http://localhost:5000/course/${params.id}`)
+                loader: ({ params }) => fetch(`https://learning-platform-assignment-server.vercel.app/course/${params.id}`)
             },
             {
                 path: '/login',
@@ -44,7 +46,15 @@ export const router = createBrowserRouter([
             {
                 path: '/checkout/:id',
                 element: <PrivetRoute><CheckOutPage></CheckOutPage></PrivetRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/course/${params.id}`)
+                loader: ({ params }) => fetch(`https://learning-platform-assignment-server.vercel.app/course/${params.id}`)
+            },
+            {
+                path: 'faq',
+                element: <FAQ></FAQ>
+            },
+            {
+                path: 'blog',
+                element: <Blog></Blog>
             }
         ]
 

@@ -20,9 +20,9 @@ const Header = () => {
     return (
         <div className='grid lg:grid-cols-2 grid-cols-1 justify-between items-center lg:px-20 py-5 relative bg-slate-50 z-10'>
             <div className='flex lg:px-0 px-4 justify-between '>
-                <div className='flex'>
+                <div className='flex items-center'>
                     <img src={logo} alt="" className='w-[80px]' />
-                    <Link to='/'><h1 className='text-5xl font-bold NavTitle text-yellow-500'>ULEARNING</h1></Link>
+                    <Link to='/'><h1 className='lg:text-5xl text-3xl font-bold NavTitle text-yellow-500'>ULEARNING</h1></Link>
                 </div>
                 <button className='lg:hidden text-3xl' onClick={() => setOpen(!open)}>{open ? <BsXLg></BsXLg> : <GoListUnordered></GoListUnordered>}</button>
             </div>

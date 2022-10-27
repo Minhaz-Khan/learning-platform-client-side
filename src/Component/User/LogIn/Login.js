@@ -50,9 +50,9 @@ const Login = () => {
 
     return (
         <section className="flex justify-center p-6  text-gray-50">
-            <div className=' border-2 w-4/12 bg-gray-400 rounded-lg'>
+            <div className=' border-2 lg:w-4/12 w-12/12 bg-gray-400 rounded-lg'>
                 <h3 className='text-2xl font-medium text-center border-b-2 py-5'>Log in</h3>
-                <form className=" space-y-10  my-10 ml-20" onSubmit={handleSubmit(handleLoginForm)}>
+                <form className=" space-y-10  my-10 lg:ml-20 ml-5" onSubmit={handleSubmit(handleLoginForm)}>
 
                     <div>
                         <p><label htmlFor="">Email</label></p>
@@ -66,7 +66,7 @@ const Login = () => {
                     <button className='bg-white text-black px-8 py-2 hover:bg-blue-500 duration-300'>Log in</button>
                     <div className='flex space-x-20'>
                         <p>Don't Have an Account: <Link to={'/signup'} className='text-yellow-500'>Sign Up</Link></p>
-                        <div className='flex items-center space-x-3 text-xl text-black'>
+                        <div className='flex items-center space-x-3 text-xl text-black pr-5'>
                             <GoMarkGithub onClick={handleGithubLogin} className='cursor-pointer hover:scale-150 duration-200'></GoMarkGithub>
                             <AiOutlineGoogle onClick={handleGoogleLogin} className='cursor-pointer hover:scale-150 duration-200'></AiOutlineGoogle>
                         </div>

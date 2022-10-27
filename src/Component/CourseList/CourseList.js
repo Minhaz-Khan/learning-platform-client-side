@@ -23,7 +23,7 @@ const CourseList = ({ course }) => {
                     <Link to={`/course/${_id}`} className="block">
                         <h3 className="text-xl font-semibold dark:text-violet-400">{about.length > 150 ? about.slice(0, 150) + '...' : about}</h3>
                     </Link>
-                    <div className='flex justify-between w-8/12'>
+                    <div className='flex justify-between lg:w-8/12 w-10/12'>
                         <p>{level}</p>
                         <p className="flex items-center"><FaStar></FaStar>{cours_duration}</p>
                         <p className="flex items-center"><FaClock></FaClock>{rating}</p>
