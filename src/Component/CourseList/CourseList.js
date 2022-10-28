@@ -27,14 +27,14 @@ const CourseList = ({ course }) => {
                 </div>
                 <div className="space-y-2">
                     <Link to={`/course/${_id}`} className="block">
-                        <h3 className="text-xl font-semibold dark:text-violet-400">{about.length > 150 ? about.slice(0, 150) + '...' : about}</h3>
+                        <h3 className="text-xl font-semibold dark:text-gray-200">{about.length > 150 ? about.slice(0, 150) + '...' : about}</h3>
                     </Link>
                     <div className='flex justify-between lg:w-8/12 w-10/12'>
                         <p>{level}</p>
                         <p className="flex items-center"><FaStar></FaStar>{cours_duration}</p>
                         <p className="flex items-center"><FaClock></FaClock>{rating}</p>
                     </div>
-                    <button className='bg-blue-600   hover:bg-yellow-500 hover:text-black duration-500 px-10  py-2 rounded-lg text-white' onClick={handleDetailsButton}>Course Details</button>
+                    <button className='bg-[#a5def1]   hover:bg-[#387b9a] text-black duration-500 px-10  py-2 rounded-lg hover:text-white' onClick={handleDetailsButton}>Course Details</button>
                 </div>
             </div>
         </div>

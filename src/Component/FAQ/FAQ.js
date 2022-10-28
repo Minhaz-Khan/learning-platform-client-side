@@ -2,7 +2,7 @@ import React from 'react';
 
 const FAQ = () => {
     return (
-        <section className="dark:bg-gray-800 dark:text-gray-100">
+        <section className="dark:bg-gray-800 dark:text-gray-100 h-screen">
             <div className="container flex flex-col justify-center p-4 mx-auto md:p-8">
                 <h2 className="mb-12 text-4xl font-bold leading-none text-center sm:text-5xl">Frequently Asked Questions</h2>
                 <div className="grid gap-10 md:gap-8 sm:p-3 md:grid-cols-2 lg:px-12 xl:px-32">
@@ -24,10 +24,8 @@ const FAQ = () => {
                     </div>
                     <div>
                         <h3 className="font-semibold">What exactly is UX design?</h3>
-                        <p className="mt-1 dark:text-gray-400 
-                        bg-[#387b9a] bg-[#70afce] bg-[#a5def1] bg-[#FFFFFF]
-                        
-                        ">User experience (UX) design is an umbrella term representing the entire process of creating products and services that provide intuitive and delightful experience to their users.
+                        <p className="mt-1 dark:text-gray-400 ">
+                            User experience (UX) design is an umbrella term representing the entire process of creating products and services that provide intuitive and delightful experience to their users.
 
                             People widely use terms like “UI/UX Design” or “Usability Design” to represent User Experience Design. However UI (User Interface) Design and Usability Design are subsets of UX Design.
 
