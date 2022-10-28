@@ -2,7 +2,6 @@ import React from 'react';
 
 const Blog = () => {
     return (
-<<<<<<< HEAD
         <div className='flex justify-center items-center pt-10 dark:bg-slate-700 h-screen'>
             <div className='space-y-10'>
                 <div className='flex space-x-10'>
@@ -45,15 +44,6 @@ const Blog = () => {
                         </div>
                     </div>
                 </div>
-=======
-        <div>
-            <div className="max-w-md p-6 overflow-hidden rounded-lg shadow dark:bg-gray-900 dark:text-gray-100">
-                <article>
-                    <h2 className="text-xl font-bold">What is CORS ?</h2>
-                    <p className="mt-4 dark:text-gray-400">Cross-origin resource sharing (CORS) is a browser mechanism which enables controlled access to resources located outside of a given domain. It extends and adds flexibility to the same-origin policy (SOP). However, it also provides potential for cross-domain attacks, if a website's CORS policy is poorly configured and implemented. CORS is not a protection against cross-origin attacks such as cross-site request forgery (CSRF).</p>
-
-                </article>
->>>>>>> 8edf61903cde706e52fa4595a0a0e4fc049139d2
             </div>
         </div>
     );
